@@ -1,35 +1,7 @@
-machine:
-  python:
-    version: 2.7.6
-  services:
-    - docker
-  environment:
-    FOO: bar
-
 dependencies:
-  pre:
-    - wget -O /tmp/selenium-server-standalone-2.45.0.jar "http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar"
-    - java -jar /tmp/selenium-server-standalone-2.45.0.jar:
-        background: true
-    - bash -c 'setsid python -m SimpleHTTPServer 8000 &':
-        pwd: server-root
-        background: true
-#  post:
-#    - sudo apt-get update; sudo apt-get install -y x11vnc
-#    - x11vnc -forever -nopw:
-#        background: true
+  override:
+    - echo "doing nothing"
 
-#test:
-#  post:
-#    - cat ~/.circlerc
-#    - >
-#      if [ -n "${RUN_NIGHTLY_BUILD}" ]; then
-#        ./bin/run-integration-tests.sh ${INTEGRATION_TARGET};
-#      fi
-
-
-#deployment:
-#  staging:
-#    branch: master
-#    heroku:
-#      appname: quiet-depths-3134
+test:
+  override:
+    - echo "1"
